@@ -1,0 +1,32 @@
+name: Build Package
+run-name: Build Package
+
+on:
+  workflow_dispatch:  
+
+jobs:
+  build_package:
+    name: Build Package
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Install Dotnet
+        uses: actions/setup-dotnet@v3.0.3
+        with:
+          dotnet-version: 7.0.x
+          
+      - name: Install NuGet
+        uses: NuGet/setup-nuget@v1.1.1
+        
+      - name: Checkout
+        uses: actions/checkout@v3.1.0
+        
+      - name: Build
+        run: dotnet build src/ --configuration Release
+
+      - name: Add NuGet Source
+        run: dotnet nuget add source --username ZippyNeuron --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name GitHub "https://nuget.pkg.github.com/ZippyNeuron/index.json"
+
+      - name: Publish Nuget Package
+        run: dotnet nuget push "Metarwiz/bin/Release/*.nupkg" --api-key ${{ secrets.PUSH_PACKAGE_TOKEN }} --source "GitHub"
+  

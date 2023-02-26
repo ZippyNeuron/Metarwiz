@@ -1,0 +1,25 @@
+name: Continuous Integration
+run-name: Continuous Integration
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  continuous_integration:
+    name: Continuous Integration
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+    - name: Install Dotnet
+      uses: actions/setup-dotnet@v3.0.3
+      with:
+        dotnet-version: 7.0.x
+          
+    - name: Checkout
+      uses: actions/checkout@v3.1.0
+      
+    - name: Build
+      run: dotnet build Metarwiz.sln --configuration Release
+
