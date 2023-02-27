@@ -14,17 +14,11 @@ jobs:
         uses: actions/setup-dotnet@v3.0.3
         with:
           dotnet-version: 7.0.x
-          
-      - name: Install NuGet
-        uses: NuGet/setup-nuget@v1.1.1
         
       - name: Checkout
         uses: actions/checkout@v3.1.0
-        
-      - name: Build
-        run: dotnet build . --configuration Release
 
-      - name: Publish Nuget Package
+      - name: Publish NuGet - nuget.org
         id: publish_nuget
         uses: brandedoutcast/publish-nuget@v2.5.5
         with:
