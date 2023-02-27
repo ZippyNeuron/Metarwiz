@@ -1,12 +1,12 @@
-name: Publish Nuget
-run-name: Publish Nuget
+name: Publish NuGet
+run-name: Publish NuGet
 
 on:
   workflow_dispatch:  
 
 jobs:
   build_package:
-    name: Publish Nuget
+    name: Publish NuGet
     runs-on: ubuntu-latest
     timeout-minutes: 3
     steps:
