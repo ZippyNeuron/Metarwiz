@@ -13,7 +13,7 @@
     <PackageProjectUrl>https://github.com/ZippyNeuron/Metarwiz</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ZippyNeuron/Metarwiz</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
-    <Version>1.6.0</Version>
+    <Version>2.0.2</Version>
     <SignAssembly>False</SignAssembly>
     <AssemblyOriginatorKeyFile>Metarwiz.snk</AssemblyOriginatorKeyFile>
     <DelaySign>false</DelaySign>
@@ -25,7 +25,6 @@
     <PackageReleaseNotes></PackageReleaseNotes>
     <LangVersion>11</LangVersion>
     <Title>ZippyNeuron.Metarwiz</Title>
-    <PackageVersion>2.0.1</PackageVersion>
     <PackageLicenseUrl></PackageLicenseUrl>
     <PackageIcon>NuGet.png</PackageIcon>
   </PropertyGroup>
