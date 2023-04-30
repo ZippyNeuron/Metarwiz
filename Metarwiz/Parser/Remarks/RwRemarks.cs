@@ -2,16 +2,16 @@
 
 namespace ZippyNeuron.Metarwiz.Parser.Remarks
 {
-    public class RwRemarks : BaseMetarItem
+    public class RwRemarks : MetarItem
     {
         private readonly string _rmk;
 
-        public RwRemarks(Match match)
+        internal RwRemarks(Match match)
         {
             _rmk = match.Groups["RMK"].Value;
         }
 
-        public static string Pattern => @"(?<RMK>RMK)";
+        internal static string Pattern => @"(?<RMK>RMK)";
 
         public override string ToString()
         {

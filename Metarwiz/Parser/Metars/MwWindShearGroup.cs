@@ -5,7 +5,7 @@ using ZippyNeuron.Metarwiz.Parser.Helpers;
 
 namespace ZippyNeuron.Metarwiz.Parser.Metars
 {
-    public class MwWindShearGroup : BaseMetarItem
+    public class MwWindShearGroup : MetarItem
     {
         private readonly string _prefix;
         private readonly int _runway;
@@ -13,7 +13,7 @@ namespace ZippyNeuron.Metarwiz.Parser.Metars
         private readonly string _all;
         private readonly string _r;
 
-        public MwWindShearGroup(Match match)
+        internal MwWindShearGroup(Match match)
         {
             _ = match ?? throw new ArgumentNullException(nameof(match));
             
@@ -36,7 +36,7 @@ namespace ZippyNeuron.Metarwiz.Parser.Metars
         public string DesignatorDescription => Designator.GetDescription();
         public bool IsAllRunways => !string.IsNullOrEmpty(_all);
 
-        public static string Pattern => @"( )(?<PREFIX>WS) (?<R>R)(?<RUNWAY>\d{2})(?<DESIGNATOR>L|R|C)?|(?<WSALLRWY>WS ALL RWY)";
+        internal static string Pattern => @"( )(?<PREFIX>WS) (?<R>R)(?<RUNWAY>\d{2})(?<DESIGNATOR>L|R|C)?|(?<WSALLRWY>WS ALL RWY)";
 
         public override string ToString()
         {

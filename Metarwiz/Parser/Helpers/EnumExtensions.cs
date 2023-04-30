@@ -4,9 +4,9 @@ using System.Reflection;
 
 namespace ZippyNeuron.Metarwiz.Parser.Helpers
 {
-    public static class EnumExtensions
+    internal static class EnumExtensions
     {
-        public static string GetDescription(this Enum value)
+        internal static string GetDescription(this Enum value)
         {
             var attribute = value
                 .GetType()

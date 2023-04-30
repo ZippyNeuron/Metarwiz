@@ -2,16 +2,16 @@
 
 namespace ZippyNeuron.Metarwiz.Parser.Remarks
 {
-    public class RwNeedsMaintenance : BaseMetarItem
+    public class RwNeedsMaintenance : MetarItem
     {
         private readonly string _maintenance;
 
-        public RwNeedsMaintenance(Match match)
+        internal RwNeedsMaintenance(Match match)
         {
             _maintenance = match.Groups["MAINTENANCE"].Value;
         }
 
-        public static string Pattern => @"( )(?<MAINTENANCE>\$)";
+        internal static string Pattern => @"( )(?<MAINTENANCE>\$)";
 
         public override string ToString()
         {

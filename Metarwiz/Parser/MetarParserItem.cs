@@ -4,6 +4,6 @@
     {
         public int Index { get; init; }
 
-        public BaseMetarItem Item { get; init; }
+        public MetarItem Item { get; init; }
     }
 }

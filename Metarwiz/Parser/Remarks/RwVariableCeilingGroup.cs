@@ -2,7 +2,7 @@
 
 namespace ZippyNeuron.Metarwiz.Parser.Remarks
 {
-    public class RwVariableCeilingGroup : BaseMetarItem
+    public class RwVariableCeilingGroup : MetarItem
     {
         private const int _multiplier = 100;
         private readonly string _cig;
@@ -10,7 +10,7 @@ namespace ZippyNeuron.Metarwiz.Parser.Remarks
         private readonly int _to;
         private readonly string _v;
 
-        public RwVariableCeilingGroup(Match match)
+        internal RwVariableCeilingGroup(Match match)
         {
             _cig = match.Groups["CIG"].Value;
             _ = int.TryParse(match.Groups["FROM"].Value, out _from);
@@ -21,7 +21,7 @@ namespace ZippyNeuron.Metarwiz.Parser.Remarks
         public int From => _from * _multiplier;
         public int To => _to * _multiplier;
 
-        public static string Pattern => @"( )(?<CIG>CIG)\ (?<FROM>\d{3})(?<V>V)(?<TO>\d{3})";
+        internal static string Pattern => @"( )(?<CIG>CIG)\ (?<FROM>\d{3})(?<V>V)(?<TO>\d{3})";
 
         public override string ToString()
         {

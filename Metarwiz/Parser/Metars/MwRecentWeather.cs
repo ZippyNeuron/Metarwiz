@@ -5,11 +5,11 @@ using ZippyNeuron.Metarwiz.Parser.Helpers;
 
 namespace ZippyNeuron.Metarwiz.Parser.Metars
 {
-    public class MwRecentWeather : BaseMetarItem
+    public class MwRecentWeather : MetarItem
     {
         private readonly string _recent;
 
-        public MwRecentWeather(Match match)
+        internal MwRecentWeather(Match match)
         {
             _recent = match.Groups["RECENTWEATHER"].Value;
         }
@@ -17,7 +17,7 @@ namespace ZippyNeuron.Metarwiz.Parser.Metars
         public RecentWeatherType Kind => (!String.IsNullOrEmpty(_recent)) ? Enum.Parse<RecentWeatherType>(_recent) : RecentWeatherType.Unspecified;
         public string KindDescription => Kind.GetDescription();
 
-        public static string Pattern
+        internal static string Pattern
         {
             get
             {

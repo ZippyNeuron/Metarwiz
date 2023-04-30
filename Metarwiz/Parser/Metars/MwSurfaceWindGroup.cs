@@ -5,7 +5,7 @@ using ZippyNeuron.Metarwiz.Parser.Helpers;
 
 namespace ZippyNeuron.Metarwiz.Parser.Metars
 {
-    public class MwSurfaceWindGroup : BaseMetarItem
+    public class MwSurfaceWindGroup : MetarItem
     {
         private readonly int _direction;
         private readonly int _gusting;
@@ -19,7 +19,7 @@ namespace ZippyNeuron.Metarwiz.Parser.Metars
         private readonly int _to;
         private readonly string _g;
 
-        public MwSurfaceWindGroup(Match match)
+        internal MwSurfaceWindGroup(Match match)
         {
             _ = match ?? throw new ArgumentNullException(nameof(match));
             
@@ -65,7 +65,7 @@ namespace ZippyNeuron.Metarwiz.Parser.Metars
 
         public bool IsVariable => _vrb == "VRB";
 
-        public static string Pattern => @"( )((?<VRB>VRB)|(?<DIRECTION>\d{3}))((?<SEXCEEDS100>P)?(?<SPEED>(\d{2,3})))?((?<G>G)(?<GEXCEEDS100>P)?(?<GUSTING>(\d{2,3})))?(?<UNITS>MPS|KT)(\ )?((?<FROM>\d{3})(?<V>V)(?<TO>\d{3}))?";
+        internal static string Pattern => @"( )((?<VRB>VRB)|(?<DIRECTION>\d{3}))((?<SEXCEEDS100>P)?(?<SPEED>(\d{2,3})))?((?<G>G)(?<GEXCEEDS100>P)?(?<GUSTING>(\d{2,3})))?(?<UNITS>MPS|KT)(\ )?((?<FROM>\d{3})(?<V>V)(?<TO>\d{3}))?";
 
         public override string ToString()
         {

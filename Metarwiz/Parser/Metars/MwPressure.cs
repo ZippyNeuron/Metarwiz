@@ -4,12 +4,12 @@ using ZippyNeuron.Metarwiz.Parser.Helpers;
 
 namespace ZippyNeuron.Metarwiz.Parser.Metars
 {
-    public class MwPressure : BaseMetarItem
+    public class MwPressure : MetarItem
     {
         private readonly string _type;
         private readonly int _amount;
 
-        public MwPressure(Match match)
+        internal MwPressure(Match match)
         {
             _type = match.Groups["TYPE"].Value;
             _ = int.TryParse(match.Groups["AMOUNT"].Value, out _amount);
@@ -18,7 +18,7 @@ namespace ZippyNeuron.Metarwiz.Parser.Metars
         public decimal HPa => Math.Round(_type.Equals("Q") ? _amount : (_amount / 100m) * MetarConversion.InHgTohPa, 0);
         public decimal InHg => Math.Round(_type.Equals("A") ? (_amount / 100m) : _amount * MetarConversion.HPaToinHg, 2);
 
-        public static string Pattern => @"( )(?<TYPE>Q|A)(?<AMOUNT>\d{4})";
+        internal static string Pattern => @"( )(?<TYPE>Q|A)(?<AMOUNT>\d{4})";
 
         public override string ToString()
         {

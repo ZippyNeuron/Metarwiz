@@ -4,12 +4,12 @@ using ZippyNeuron.Metarwiz.Parser.Helpers;
 
 namespace ZippyNeuron.Metarwiz.Parser.Remarks
 {
-    public class RwSeaLevelPressure : BaseMetarItem
+    public class RwSeaLevelPressure : MetarItem
     {
         private readonly string _slp;
         private readonly int _pressure;
 
-        public RwSeaLevelPressure(Match match)
+        internal RwSeaLevelPressure(Match match)
         {
             _slp = match.Groups["SLP"].Value;
             _ = int.TryParse(match.Groups["PRESSURE"].Value, out _pressure);
@@ -19,7 +19,7 @@ namespace ZippyNeuron.Metarwiz.Parser.Remarks
 
         public decimal InHg => Math.Round(HPa * MetarConversion.HPaToinHg, 2);
 
-        public static string Pattern => @"( )(?<SLP>SLP)(?<PRESSURE>\d{3})";
+        internal static string Pattern => @"( )(?<SLP>SLP)(?<PRESSURE>\d{3})";
 
         public override string ToString()
         {

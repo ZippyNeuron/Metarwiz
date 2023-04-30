@@ -5,13 +5,13 @@ using ZippyNeuron.Metarwiz.Parser.Types;
 
 namespace ZippyNeuron.Metarwiz.Parser.Remarks
 {
-    public class RwPressureTendency : BaseMetarItem
+    public class RwPressureTendency : MetarItem
     {
         private readonly string _prefix;
         private readonly PressureTendencyType _type;
         private readonly int _pressure;
 
-        public RwPressureTendency(Match match)
+        internal RwPressureTendency(Match match)
         {
             _prefix = match.Groups["5"].Value;
             _ = Enum.TryParse(match.Groups["A"].Value, out _type);
@@ -26,7 +26,7 @@ namespace ZippyNeuron.Metarwiz.Parser.Remarks
 
         public decimal InHg => Math.Round(HPa * MetarConversion.HPaToinHg, 2);
 
-        public static string Pattern => @"\ (?<5>5)(?<A>\d{1})(?<PRESSURE>\d{3})";
+        internal static string Pattern => @"\ (?<5>5)(?<A>\d{1})(?<PRESSURE>\d{3})";
 
         public override string ToString()
         {

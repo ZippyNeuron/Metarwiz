@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 
 namespace ZippyNeuron.Metarwiz.Parser
 {
-    public sealed class MetarParser : IMetarParser
+    internal sealed class MetarParser : IMetarParser
     {
         private readonly List<MetarParserItem> _items = new();
         private readonly MetarInfo _metarInfo;
@@ -51,7 +51,7 @@ namespace ZippyNeuron.Metarwiz.Parser
                 
                 foreach (Match match in matchCollection)
                 {
-                    BaseMetarItem metarItem = MetarParserFactory.Create(type, match);
+                    MetarItem metarItem = MetarParserFactory.Create(type, match);
 
                     MetarParserItem mpi = new()
                     {
@@ -73,7 +73,7 @@ namespace ZippyNeuron.Metarwiz.Parser
 
         private string GetMatchPattern(Type type)
         {
-            return type.GetProperty("Pattern", BindingFlags.Static | BindingFlags.Public)
+            return type.GetProperty("Pattern", BindingFlags.Static | BindingFlags.NonPublic)
                 ?.GetValue(null, null) as string;
         }
     }

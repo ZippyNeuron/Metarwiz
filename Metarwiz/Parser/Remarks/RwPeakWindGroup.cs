@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace ZippyNeuron.Metarwiz.Parser.Remarks
 {
-    public class RwPeakWindGroup : BaseMetarItem
+    public class RwPeakWindGroup : MetarItem
     {
         private readonly string _exacttime;
         private readonly string _minutepastthehour;
@@ -14,7 +14,7 @@ namespace ZippyNeuron.Metarwiz.Parser.Remarks
         private readonly string _pkwnd;
         private readonly string _separator;
 
-        public RwPeakWindGroup(Match match)
+        internal RwPeakWindGroup(Match match)
         {
             _pkwnd = match.Groups["PKWND"].Value;
             _exacttime = match.Groups["EXACTTIME"].Value;
@@ -31,7 +31,7 @@ namespace ZippyNeuron.Metarwiz.Parser.Remarks
         public int Speed => _speed;
         public int Direction => _direction;
 
-        public static string Pattern
+        internal static string Pattern
         {
             get
             {

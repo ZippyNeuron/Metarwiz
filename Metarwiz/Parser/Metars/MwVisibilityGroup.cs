@@ -4,7 +4,7 @@ using ZippyNeuron.Metarwiz.Parser.Helpers;
 
 namespace ZippyNeuron.Metarwiz.Parser.Metars
 {
-    public class MwVisibilityGroup : BaseMetarItem
+    public class MwVisibilityGroup : MetarItem
     {
         private readonly int _minimumVisibility;
         private readonly int _directionVisibility;
@@ -17,9 +17,9 @@ namespace ZippyNeuron.Metarwiz.Parser.Metars
         private readonly int _statuteMiles;
         private readonly string _sm;
         private readonly bool _isFraction;
-        private readonly bool _isSm; 
+        private readonly bool _isSm;
 
-        public MwVisibilityGroup(Match match)
+        internal MwVisibilityGroup(Match match)
         {
             _ = match ?? throw new ArgumentNullException(nameof(match));
             
@@ -59,7 +59,7 @@ namespace ZippyNeuron.Metarwiz.Parser.Metars
         
         public bool HasDirectionVisibility => !string.IsNullOrEmpty(_direction);
 
-        public static string Pattern => @"( )(?<CAVOK>CAVOK)|(?<MINVISIBILITY>\ \d{4}(?=\ |$))(\ (?<DIRVISIBILITY>\d{4})(?<DIRECTION>\w*))?|((?<PT1>\d+)(?<OVER>\/)(?<PT2>\d+)|(?<STATUTEMILES>\d+))(?<SM>SM)";
+        internal static string Pattern => @"( )(?<CAVOK>CAVOK)|(?<MINVISIBILITY>\ \d{4}(?=\ |$))(\ (?<DIRVISIBILITY>\d{4})(?<DIRECTION>\w*))?|((?<PT1>\d+)(?<OVER>\/)(?<PT2>\d+)|(?<STATUTEMILES>\d+))(?<SM>SM)";
 
         public override string ToString()
         {

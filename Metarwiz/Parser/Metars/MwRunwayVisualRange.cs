@@ -5,7 +5,7 @@ using ZippyNeuron.Metarwiz.Parser.Helpers;
 
 namespace ZippyNeuron.Metarwiz.Parser.Metars
 {
-    public class MwRunwayVisualRange : BaseMetarItem
+    public class MwRunwayVisualRange : MetarItem
     {
         private readonly int _runway;
         private readonly string _designator;
@@ -17,7 +17,7 @@ namespace ZippyNeuron.Metarwiz.Parser.Metars
         private readonly string _r;
         private readonly string _divider;
 
-        public MwRunwayVisualRange(Match match)
+        internal MwRunwayVisualRange(Match match)
         {
             _designator = match.Groups["DESIGNATOR"].Value;
             _observation = match.Groups["OBSERVATION"].Value;
@@ -58,7 +58,7 @@ namespace ZippyNeuron.Metarwiz.Parser.Metars
             };
         public string TendencyDescription => Tendency.GetDescription();
 
-        public static string Pattern => @"( )(?<R>R)(?<RUNWAY>\d{2})(?<DESIGNATOR>L|R|C)?(?<DIVIDER>\/)((?<OBSERVATION>P|M)?(?<FROM>\d{4}(?=V|U|D|N|FT|\b))?((?<V>V)?(?<TO>\d{4}))?)(?<TENDENCY>U|D|N|FT)?";
+        internal static string Pattern => @"( )(?<R>R)(?<RUNWAY>\d{2})(?<DESIGNATOR>L|R|C)?(?<DIVIDER>\/)((?<OBSERVATION>P|M)?(?<FROM>\d{4}(?=V|U|D|N|FT|\b))?((?<V>V)?(?<TO>\d{4}))?)(?<TENDENCY>U|D|N|FT)?";
         
         public override string ToString()
         {

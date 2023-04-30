@@ -5,7 +5,7 @@ using ZippyNeuron.Metarwiz.Parser.Helpers;
 
 namespace ZippyNeuron.Metarwiz.Parser.Metars
 {
-    public class MwCloud : BaseMetarItem
+    public class MwCloud : MetarItem
     {
         private const int Multiplier = 100;
         
@@ -16,7 +16,7 @@ namespace ZippyNeuron.Metarwiz.Parser.Metars
         private readonly string _cloudOriginal;
         private readonly string _cloudTypeOriginal;
 
-        public MwCloud(Match match)
+        internal MwCloud(Match match)
         {
             _ = match ?? throw new ArgumentNullException(nameof(match));
             
@@ -46,8 +46,8 @@ namespace ZippyNeuron.Metarwiz.Parser.Metars
         public string CloudDescription => Cloud.GetDescription();
         
         public string CloudTypeDescription => CloudType.GetDescription();
-        
-        public static string Pattern
+
+        internal static string Pattern
         {
             get
             {

@@ -3,11 +3,11 @@ using System.Text.RegularExpressions;
 
 namespace ZippyNeuron.Metarwiz.Parser.Metars
 {
-    public class MwLocation : BaseMetarItem
+    public class MwLocation : MetarItem
     {
         private readonly string _icao;
 
-        public MwLocation(Match match)
+        internal MwLocation(Match match)
         {
             _ = match ?? throw new ArgumentNullException(nameof(match));
             
@@ -16,7 +16,7 @@ namespace ZippyNeuron.Metarwiz.Parser.Metars
 
         public string ICAO => _icao;
 
-        public static string Pattern => @"^METAR( )(?<ICAO>[A-Z]{4})";
+        internal static string Pattern => @"^METAR( )(?<ICAO>[A-Z]{4})";
 
         public override string ToString()
         {

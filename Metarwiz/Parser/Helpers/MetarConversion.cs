@@ -1,6 +1,6 @@
 ﻿namespace ZippyNeuron.Metarwiz.Parser.Helpers
 {
-    public static class MetarConversion
+    internal static class MetarConversion
     {
         public static decimal InHgTohPa = 33.86389m;
         public static decimal HPaToinHg = 00.02953m;

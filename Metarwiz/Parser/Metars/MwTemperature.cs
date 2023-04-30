@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace ZippyNeuron.Metarwiz.Parser.Metars
 {
-    public class MwTemperature : BaseMetarItem
+    public class MwTemperature : MetarItem
     {
         private readonly string _tempSign;
         private readonly int _temperature;
@@ -11,7 +11,7 @@ namespace ZippyNeuron.Metarwiz.Parser.Metars
         private readonly int _dewPoint;
         private readonly string _separator;
 
-        public MwTemperature(Match match)
+        internal MwTemperature(Match match)
         {
             _ = int.TryParse(match.Groups["TEMPERATURE"].Value, out _temperature);
             _ = int.TryParse(match.Groups["DEWPOINT"].Value, out _dewPoint);
@@ -22,8 +22,8 @@ namespace ZippyNeuron.Metarwiz.Parser.Metars
 
         public int Celsius => (_tempSign == "M") ? _temperature * -1 : _temperature;
         public int DewPoint => (_dewPointSign == "M") ? _dewPoint * -1 : _dewPoint;
-        
-        public static string Pattern => @"( )(?<TEMPERATURESIGN>M|)(?<TEMPERATURE>\d+)(?<SEPARATOR>\/)(?<DEWPOINTSIGN>M|)(?<DEWPOINT>\d+)";
+
+        internal static string Pattern => @"( )(?<TEMPERATURESIGN>M|)(?<TEMPERATURE>\d+)(?<SEPARATOR>\/)(?<DEWPOINTSIGN>M|)(?<DEWPOINT>\d+)";
 
         public override string ToString()
         {

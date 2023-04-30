@@ -10,7 +10,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        string metar = "METAR EGLC 221630Z AUTO 24008KT 9999 R32L/M0400V1200D +VCFG -RA BKN025 SCT040 M01/M10 Q1022 REFZRA WS R18C W15/S2 R27L/421594 NOSIG RMK AO2 P1234 T00640036 $ PK WND 20032/25 58033 SLP125 10066 21012 60009 TWR VIS 1 70090 CIG 013V017 WSHFT 1715";
+        string metar = "METAR EGLC 221630Z AUTO 24008KT 9999 R32L/M0400V1200D +VCFG -RA BKN025 SCT040 M01/M10 Q1022 REFZRA WS R18C W15/S2 NOSIG RMK AO2 P1234 T00640036 $ PK WND 20032/25 58033 SLP125 10066 21012 60009 TWR VIS 1 70090 CIG 013V017 WSHFT 1715";
 
         IMetarwiz metarwiz = new Metarwiz();
 
@@ -32,7 +32,7 @@ class Program
             Out($"MwRecentWeather", GetProperties(cloud));
         Out("MwWindShearGroup",     GetProperties(metarwiz.Get<MwWindShearGroup>()));
         Out("MwStateOfSeaSurface",  GetProperties(metarwiz.Get<MwStateOfSeaSurface>()));
-        Out("MwStateOfRunway",      GetProperties(metarwiz.Get<MwStateOfRunway>()));
+        //Out("MwStateOfRunway",      GetProperties(metarwiz.Get<MwStateOfRunway>()));
         Out("MwNoSig",              GetProperties(metarwiz.Get<MwNoSig>()));
 
         Out("RwRemarks", GetProperties(metarwiz.Get<RwRemarks>()));
@@ -50,6 +50,11 @@ class Program
         Out("RwTwentyFourHourPrecipitation", GetProperties(metarwiz.Get<RwTwentyFourHourPrecipitation>()));
         Out("RwVariableCeilingGroup", GetProperties(metarwiz.Get<RwVariableCeilingGroup>()));
         Out("RwWindShiftGroup", GetProperties(metarwiz.Get<RwWindShiftGroup>()));
+
+        Out("Metar (Original)", $" | {metar}");
+        Out("Metar (Processed)", $" | {metarwiz}");
+
+        Out("Metar (Checksum)", $" | Passed: {metarwiz.ToString() == metar}");
     }
 
     private static void Out(string label, string value)
@@ -57,7 +62,7 @@ class Program
         System.Console.WriteLine($"{label.PadRight(32)}{value}");
     }
 
-    private static string GetProperties(BaseMetarItem baseMetarItem)
+    private static string GetProperties(MetarItem baseMetarItem)
     {
         var properties = baseMetarItem.GetType()
             .GetProperties()

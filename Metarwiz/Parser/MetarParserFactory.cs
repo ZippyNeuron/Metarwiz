@@ -1,13 +1,15 @@
 ﻿using System;
+using System.Globalization;
+using System.Reflection;
 using System.Text.RegularExpressions;
 
 namespace ZippyNeuron.Metarwiz.Parser
 {
-    public static class MetarParserFactory
+    internal static class MetarParserFactory
     {
-        public static BaseMetarItem Create(Type t, Match m)
+        public static MetarItem Create(Type t, Match m)
         {
-            return (BaseMetarItem)Activator.CreateInstance(t, m);
+            return (MetarItem)Activator.CreateInstance(t, BindingFlags.Instance | BindingFlags.NonPublic, null, new[] { m }, CultureInfo.InvariantCulture);
         }
     }
 }

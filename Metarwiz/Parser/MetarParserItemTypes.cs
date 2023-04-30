@@ -5,9 +5,9 @@ using ZippyNeuron.Metarwiz.Parser.Remarks;
 
 namespace ZippyNeuron.Metarwiz.Parser
 {
-    public static class MetarParserItemTypes
+    internal static class MetarParserItemTypes
     {
-        public static IEnumerable<Type> MetarTypesToParse = new Type[]
+        internal static IEnumerable<Type> MetarTypesToParse = new Type[]
         {
             typeof(MwLocation),
             typeof(MwMetar),
@@ -27,7 +27,7 @@ namespace ZippyNeuron.Metarwiz.Parser
             typeof(MwStateOfRunway)
         };
 
-        public static IEnumerable<Type> RemarkTypesToParse = new Type[]
+        internal static IEnumerable<Type> RemarkTypesToParse = new Type[]
         {
             typeof(RwRemarks),
             typeof(RwSurfaceTowerVisibilityGroup),

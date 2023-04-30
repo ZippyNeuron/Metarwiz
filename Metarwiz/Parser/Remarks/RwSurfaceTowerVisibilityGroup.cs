@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace ZippyNeuron.Metarwiz.Parser.Remarks
 {
-    public class RwSurfaceTowerVisibilityGroup : BaseMetarItem
+    public class RwSurfaceTowerVisibilityGroup : MetarItem
     {
         private readonly string _type;
         private readonly string _vis;
@@ -11,7 +11,7 @@ namespace ZippyNeuron.Metarwiz.Parser.Remarks
         private readonly decimal _pt1;
         private readonly decimal _pt2;
 
-        public RwSurfaceTowerVisibilityGroup(Match match)
+        internal RwSurfaceTowerVisibilityGroup(Match match)
         {
             _type = match.Groups["TYPE"].Value;
             _vis = match.Groups["VIS"].Value;
@@ -22,7 +22,7 @@ namespace ZippyNeuron.Metarwiz.Parser.Remarks
 
         public decimal Distance => Math.Round(_distance + ((_pt2 > 0) ? (_pt1 / _pt2) : 0m), 2);
 
-        public static string Pattern => @"( )(?<TYPE>SFC|TWR)\ (?<VIS>VIS)\ (?<VALUE>\d{1})(\ (?<PT1>\d+)\/(?<PT2>\d+))?";
+        internal static string Pattern => @"( )(?<TYPE>SFC|TWR)\ (?<VIS>VIS)\ (?<VALUE>\d{1})(\ (?<PT1>\d+)\/(?<PT2>\d+))?";
 
         public override string ToString()
         {

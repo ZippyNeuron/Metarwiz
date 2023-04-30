@@ -5,7 +5,7 @@ using ZippyNeuron.Metarwiz.Parser.Helpers;
 
 namespace ZippyNeuron.Metarwiz.Parser.Metars
 {
-    public class MwStateOfRunway : BaseMetarItem
+    public class MwStateOfRunway : MetarItem
     {
         private readonly string _prefix;
         private readonly int _runway;
@@ -17,7 +17,7 @@ namespace ZippyNeuron.Metarwiz.Parser.Metars
         private readonly int? _depth;
         private readonly int? _friction;
 
-        public MwStateOfRunway(Match match)
+        internal MwStateOfRunway(Match match)
         {
             _prefix = match.Groups["PREFIX"].Value;
             _ = int.TryParse(match.Groups["RUNWAY"].Value, out _runway);
@@ -92,7 +92,7 @@ namespace ZippyNeuron.Metarwiz.Parser.Metars
         public int Bearing => (!IsNoSpecificRunway) ? (IsLeft) ? _runway : (_runway - 50) : 0;
         public string Runway => (!IsNoSpecificRunway) ? $"{Bearing}{Orientation}" : string.Empty;
 
-        public static string Pattern => @"( )(?<PREFIX>R)(?<RUNWAY>\d{2})?(?<DESIGNATOR>L|C|R)?(?<SEPARATOR>\/)(?<CODE>\d{6})";
+        internal static string Pattern => @"( )(?<PREFIX>R)(?<RUNWAY>\d{2})?(?<DESIGNATOR>L|C|R)?(?<SEPARATOR>\/)(?<CODE>\d{6})";
 
         public override string ToString()
         {

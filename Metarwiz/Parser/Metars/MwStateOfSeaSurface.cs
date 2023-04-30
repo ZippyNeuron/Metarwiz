@@ -2,7 +2,7 @@
 
 namespace ZippyNeuron.Metarwiz.Parser.Metars
 {
-    public class MwStateOfSeaSurface : BaseMetarItem
+    public class MwStateOfSeaSurface : MetarItem
     {
         private readonly string _prefix;
         private readonly string _tempSign;
@@ -11,7 +11,7 @@ namespace ZippyNeuron.Metarwiz.Parser.Metars
         private readonly string _separator;
         private readonly string _s;
 
-        public MwStateOfSeaSurface(Match match)
+        internal MwStateOfSeaSurface(Match match)
         {
             _prefix = match.Groups["PREFIX"].Value;
             _tempSign = match.Groups["SURFACETEMPSIGN"].Value;
@@ -24,7 +24,7 @@ namespace ZippyNeuron.Metarwiz.Parser.Metars
         public int Celsius => (_tempSign == "M") ? _surfaceTemp * -1 : _surfaceTemp;
         public int SeaState => _seaState;
 
-        public static string Pattern => @"( )(?<PREFIX>W)(?<SURFACETEMPSIGN>M)?(?<SURFACETEMP>\d+)(?<SEPARATOR>\/)(?<S>S)(?<SEASTATE>\d+)";
+        internal static string Pattern => @"( )(?<PREFIX>W)(?<SURFACETEMPSIGN>M)?(?<SURFACETEMP>\d+)(?<SEPARATOR>\/)(?<S>S)(?<SEASTATE>\d+)";
 
         public override string ToString()
         {

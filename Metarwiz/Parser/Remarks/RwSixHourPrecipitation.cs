@@ -2,13 +2,13 @@
 
 namespace ZippyNeuron.Metarwiz.Parser.Remarks
 {
-    public class RwSixHourPrecipitation : BaseMetarItem
+    public class RwSixHourPrecipitation : MetarItem
     {
         private readonly string _prefix;
         private readonly decimal _units = 0.01m;
         private readonly int _amount;
 
-        public RwSixHourPrecipitation(Match match)
+        internal RwSixHourPrecipitation(Match match)
         {
             _prefix = match.Groups["6"].Value;
             _ = int.TryParse(match.Groups["AMOUNT"].Value, out _amount);
@@ -18,7 +18,7 @@ namespace ZippyNeuron.Metarwiz.Parser.Remarks
 
         public decimal Inches => _amount * _units;
 
-        public static string Pattern => @"\ (?<6>6)(?<AMOUNT>\d{4})";
+        internal static string Pattern => @"\ (?<6>6)(?<AMOUNT>\d{4})";
 
         public override string ToString()
         {

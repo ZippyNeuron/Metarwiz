@@ -5,14 +5,14 @@ using ZippyNeuron.Metarwiz.Parser.Helpers;
 
 namespace ZippyNeuron.Metarwiz.Parser.Metars
 {
-    public class MwWeather : BaseMetarItem
+    public class MwWeather : MetarItem
     {
         private readonly string _intensity;
         private readonly string _vacinity;
         private readonly string _weather1;
         private readonly string _weather2;
 
-        public MwWeather(Match match)
+        internal MwWeather(Match match)
         {
             _intensity = match.Groups["INTENSITY"].Value;
             _vacinity = match.Groups["VACINITY"].Value;
@@ -30,7 +30,7 @@ namespace ZippyNeuron.Metarwiz.Parser.Metars
             _ => WeatherIntensityIndicatorType.Moderate
         };
         public string IntensityDescription => Intensity.GetDescription();
-        public static string Pattern
+        internal static string Pattern
         {
             get
             {

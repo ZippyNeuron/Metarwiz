@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace ZippyNeuron.Metarwiz.Parser.Remarks
 {
-    public class RwWindShiftGroup : BaseMetarItem
+    public class RwWindShiftGroup : MetarItem
     {
         private readonly string _fropa;
         private readonly string _exacttime;
@@ -12,7 +12,7 @@ namespace ZippyNeuron.Metarwiz.Parser.Remarks
         private readonly int? _minutes;
         private readonly string _wshft;
 
-        public RwWindShiftGroup(Match match)
+        internal RwWindShiftGroup(Match match)
         {
             _wshft = match.Groups["WSHFT"].Value;
             _fropa = match.Groups["FROPA"].Value;
@@ -26,7 +26,7 @@ namespace ZippyNeuron.Metarwiz.Parser.Remarks
         public int? Minutes => _minutes;
         public bool IsFrontalPassage => !String.IsNullOrEmpty(_fropa);
 
-        public static string Pattern
+        internal static string Pattern
         {
             get
             {

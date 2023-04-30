@@ -3,11 +3,11 @@ using System.Text.RegularExpressions;
 
 namespace ZippyNeuron.Metarwiz.Parser.Metars
 {
-    public class MwAutoOrNil : BaseMetarItem
+    public class MwAutoOrNil : MetarItem
     {
         private readonly string _type;
-
-        public MwAutoOrNil(Match match)
+        
+        internal MwAutoOrNil(Match match)
         {
             _ = match ?? throw new ArgumentNullException(nameof(match));
             
@@ -17,7 +17,7 @@ namespace ZippyNeuron.Metarwiz.Parser.Metars
         public bool IsAuto => _type == "AUTO";
         public bool IsNil => _type == "NIL";
 
-        public static string Pattern => @"( )(?<TYPE>AUTO|NIL)";
+        internal static string Pattern => @"( )(?<TYPE>AUTO|NIL)";
 
         public override string ToString()
         {

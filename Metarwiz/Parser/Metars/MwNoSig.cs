@@ -2,16 +2,16 @@
 
 namespace ZippyNeuron.Metarwiz.Parser.Metars
 {
-    public class MwNoSig : BaseMetarItem
+    public class MwNoSig : MetarItem
     {
         private readonly string _nosig;
 
-        public MwNoSig(Match match)
+        internal MwNoSig(Match match)
         {
             _nosig = match.Groups["NOSIG"].Value;
         }
 
-        public static string Pattern => @"( )(?<NOSIG>NOSIG)";
+        internal static string Pattern => @"( )(?<NOSIG>NOSIG)";
 
         public override string ToString()
         {

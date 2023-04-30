@@ -2,14 +2,14 @@
 
 namespace ZippyNeuron.Metarwiz.Parser.Remarks
 {
-    public class RwSixHourMinTemperature : BaseMetarItem
+    public class RwSixHourMinTemperature : MetarItem
     {
         private readonly string _prefix;
         private readonly decimal _units = 0.10m;
         private readonly int _ma;
         private readonly int _amount;
 
-        public RwSixHourMinTemperature(Match match)
+        internal RwSixHourMinTemperature(Match match)
         {
             _prefix = match.Groups["2"].Value;
             _ = int.TryParse(match.Groups["MA"].Value, out _ma);
@@ -18,7 +18,7 @@ namespace ZippyNeuron.Metarwiz.Parser.Remarks
 
         public decimal Celsius => ((_ma == 1) ? _amount * -1 : _amount) * _units;
 
-        public static string Pattern => @"( )(?<2>2)(?<MA>\d{1})(?<AMOUNT>\d{3})";
+        internal static string Pattern => @"( )(?<2>2)(?<MA>\d{1})(?<AMOUNT>\d{3})";
 
         public override string ToString()
         {
