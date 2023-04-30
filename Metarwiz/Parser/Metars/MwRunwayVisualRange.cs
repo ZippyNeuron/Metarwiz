@@ -58,7 +58,7 @@ namespace ZippyNeuron.Metarwiz.Parser.Metars
             };
         public string TendencyDescription => Tendency.GetDescription();
 
-        internal static string Pattern => @"( )(?<R>R)(?<RUNWAY>\d{2})(?<DESIGNATOR>L|R|C)?(?<DIVIDER>\/)((?<OBSERVATION>P|M)?(?<FROM>\d{4}(?=V|U|D|N|FT|\b))?((?<V>V)?(?<TO>\d{4}))?)(?<TENDENCY>U|D|N|FT)?";
+        internal static string Pattern => @"( )(?<R>R)(?<RUNWAY>\d{2})(?<DESIGNATOR>L|R|C)?(?<DIVIDER>\/)((?<OBSERVATION>P|M)(?<FROM>\d{4}(?=V|U|D|N|FT|\b))?((?<V>V)(?<TO>\d{4}))?)(?<TENDENCY>U|D|N|FT)?";
         
         public override string ToString()
         {
