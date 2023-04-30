@@ -4,10 +4,10 @@ namespace ZippyNeuron.Metarwiz.Parser
 {
     internal interface IMetarParser
     {
-        IEnumerable<MetarParserItem> Items { get; }
+        public IEnumerable<IMetarItem> Items { get; }
 
-        IEnumerable<IMetarItem> Parse();
+        public void Parse();
 
-        MetarInfo MetarInfo { get; }
+        public MetarInfo Info { get; }
     }
 }

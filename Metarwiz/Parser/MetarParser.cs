@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace ZippyNeuron.Metarwiz.Parser
@@ -18,23 +18,21 @@ namespace ZippyNeuron.Metarwiz.Parser
             Regex.CacheSize = 128;
         }
 
-        public MetarInfo MetarInfo => _metarInfo;
+        public MetarInfo Info => _metarInfo;
 
-        public IEnumerable<MetarParserItem> Items => _items;
+        public IEnumerable<IMetarItem> Items => _items
+                .OrderBy(i => i.Index)
+                .Select((value) => value.Item)
+                .Cast<IMetarItem>()
+                .ToList();
 
-        public IEnumerable<IMetarItem> Parse()
+        public void Parse()
         {
             _items.Clear();
             
             ParseTypes(_metarInfo.Metar, MetarParserItemTypes.MetarTypesToParse);
             
             ParseTypes(_metarInfo.Remarks, MetarParserItemTypes.RemarkTypesToParse);
-            
-            return _items
-                .OrderBy(i => i.Index)
-                .Select((value) => value.Item)
-                .Cast<IMetarItem>()
-                .ToList();
         }
 
         private void ParseTypes(string metar, IEnumerable<Type> types)

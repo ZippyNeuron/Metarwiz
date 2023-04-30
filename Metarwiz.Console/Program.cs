@@ -14,46 +14,46 @@ class Program
 
         IMetarwiz metarwiz = new Metarwiz();
 
-        metarwiz.Parse(metar, null);
+        var metarwizResult = metarwiz.Parse(metar, null);
 
-        Out("MwMetar",              GetProperties(metarwiz.Get<MwMetar>()));
-        Out("MwLocation",           GetProperties(metarwiz.Get<MwLocation>()));
-        Out("MwTimeOfObservation",  GetProperties(metarwiz.Get<MwTimeOfObservation>()));
-        Out("MwAutoOrNil",          GetProperties(metarwiz.Get<MwAutoOrNil>()));
-        Out("MwSurfaceWindGroup",   GetProperties(metarwiz.Get<MwSurfaceWindGroup>()));
-        Out("MwVisibilityGroup",    GetProperties(metarwiz.Get<MwVisibilityGroup>()));
-        Out("MwRunwayVisualRange",  GetProperties(metarwiz.Get<MwRunwayVisualRange>()));
-        Out("MwWeather",            GetProperties(metarwiz.Get<MwWeather>()));
-        foreach (MwCloud cloud in metarwiz.GetMany<MwCloud>())
+        Out("MwMetar",              GetProperties(metarwizResult.Get<MwMetar>()));
+        Out("MwLocation",           GetProperties(metarwizResult.Get<MwLocation>()));
+        Out("MwTimeOfObservation",  GetProperties(metarwizResult.Get<MwTimeOfObservation>()));
+        Out("MwAutoOrNil",          GetProperties(metarwizResult.Get<MwAutoOrNil>()));
+        Out("MwSurfaceWindGroup",   GetProperties(metarwizResult.Get<MwSurfaceWindGroup>()));
+        Out("MwVisibilityGroup",    GetProperties(metarwizResult.Get<MwVisibilityGroup>()));
+        Out("MwRunwayVisualRange",  GetProperties(metarwizResult.Get<MwRunwayVisualRange>()));
+        Out("MwWeather",            GetProperties(metarwizResult.Get<MwWeather>()));
+        foreach (MwCloud cloud in metarwizResult.GetMany<MwCloud>())
             Out($"MwCloud",         GetProperties(cloud));
-        Out("MwTemperature",        GetProperties(metarwiz.Get<MwTemperature>()));
-        Out("MwPressure",           GetProperties(metarwiz.Get<MwPressure>()));
-        foreach (MwRecentWeather cloud in metarwiz.GetMany<MwRecentWeather>())
+        Out("MwTemperature",        GetProperties(metarwizResult.Get<MwTemperature>()));
+        Out("MwPressure",           GetProperties(metarwizResult.Get<MwPressure>()));
+        foreach (MwRecentWeather cloud in metarwizResult.GetMany<MwRecentWeather>())
             Out($"MwRecentWeather", GetProperties(cloud));
-        Out("MwWindShearGroup",     GetProperties(metarwiz.Get<MwWindShearGroup>()));
-        Out("MwStateOfSeaSurface",  GetProperties(metarwiz.Get<MwStateOfSeaSurface>()));
-        Out("MwStateOfRunway",      GetProperties(metarwiz.Get<MwStateOfRunway>()));
-        Out("MwNoSig",              GetProperties(metarwiz.Get<MwNoSig>()));
+        Out("MwWindShearGroup",     GetProperties(metarwizResult.Get<MwWindShearGroup>()));
+        Out("MwStateOfSeaSurface",  GetProperties(metarwizResult.Get<MwStateOfSeaSurface>()));
+        Out("MwStateOfRunway",      GetProperties(metarwizResult.Get<MwStateOfRunway>()));
+        Out("MwNoSig",              GetProperties(metarwizResult.Get<MwNoSig>()));
 
-        Out("RwRemarks", GetProperties(metarwiz.Get<RwRemarks>()));
-        Out("RwAutomatedStation", GetProperties(metarwiz.Get<RwAutomatedStation>()));
-        Out("RwHourlyPrecipitation", GetProperties(metarwiz.Get<RwHourlyPrecipitation>()));
-        Out("RwHourlyTemperature", GetProperties(metarwiz.Get<RwHourlyTemperature>()));
-        Out("RwNeedsMaintenance", GetProperties(metarwiz.Get<RwNeedsMaintenance>()));
-        Out("RwPeakWindGroup", GetProperties(metarwiz.Get<RwPeakWindGroup>()));
-        Out("RwPressureTendency", GetProperties(metarwiz.Get<RwPressureTendency>()));
-        Out("RwSeaLevelPressure", GetProperties(metarwiz.Get<RwSeaLevelPressure>()));
-        Out("RwSixHourMaxTemperature", GetProperties(metarwiz.Get<RwSixHourMaxTemperature>()));
-        Out("RwSixHourMinTemperature", GetProperties(metarwiz.Get<RwSixHourMinTemperature>()));
-        Out("RwSixHourPrecipitation", GetProperties(metarwiz.Get<RwSixHourPrecipitation>()));
-        Out("RwSurfaceTowerVisibilityGroup", GetProperties(metarwiz.Get<RwSurfaceTowerVisibilityGroup>()));
-        Out("RwTwentyFourHourPrecipitation", GetProperties(metarwiz.Get<RwTwentyFourHourPrecipitation>()));
-        Out("RwVariableCeilingGroup", GetProperties(metarwiz.Get<RwVariableCeilingGroup>()));
-        Out("RwWindShiftGroup", GetProperties(metarwiz.Get<RwWindShiftGroup>()));
+        Out("RwRemarks", GetProperties(metarwizResult.Get<RwRemarks>()));
+        Out("RwAutomatedStation", GetProperties(metarwizResult.Get<RwAutomatedStation>()));
+        Out("RwHourlyPrecipitation", GetProperties(metarwizResult.Get<RwHourlyPrecipitation>()));
+        Out("RwHourlyTemperature", GetProperties(metarwizResult.Get<RwHourlyTemperature>()));
+        Out("RwNeedsMaintenance", GetProperties(metarwizResult.Get<RwNeedsMaintenance>()));
+        Out("RwPeakWindGroup", GetProperties(metarwizResult.Get<RwPeakWindGroup>()));
+        Out("RwPressureTendency", GetProperties(metarwizResult.Get<RwPressureTendency>()));
+        Out("RwSeaLevelPressure", GetProperties(metarwizResult.Get<RwSeaLevelPressure>()));
+        Out("RwSixHourMaxTemperature", GetProperties(metarwizResult.Get<RwSixHourMaxTemperature>()));
+        Out("RwSixHourMinTemperature", GetProperties(metarwizResult.Get<RwSixHourMinTemperature>()));
+        Out("RwSixHourPrecipitation", GetProperties(metarwizResult.Get<RwSixHourPrecipitation>()));
+        Out("RwSurfaceTowerVisibilityGroup", GetProperties(metarwizResult.Get<RwSurfaceTowerVisibilityGroup>()));
+        Out("RwTwentyFourHourPrecipitation", GetProperties(metarwizResult.Get<RwTwentyFourHourPrecipitation>()));
+        Out("RwVariableCeilingGroup", GetProperties(metarwizResult.Get<RwVariableCeilingGroup>()));
+        Out("RwWindShiftGroup", GetProperties(metarwizResult.Get<RwWindShiftGroup>()));
 
         Out("Metar (Original)", $" | {metar}");
-        Out("Metar (Processed)", $" | {metarwiz}");
-        Out("Metar (Checksum)", $" | Passed: {metarwiz.ToString() == metar}");
+        Out("Metar (Processed)", $" | {metarwizResult}");
+        Out("Metar (Checksum)", $" | Passed: {metarwizResult.ToString() == metar}");
     }
 
     private static void Out(string label, string value)
