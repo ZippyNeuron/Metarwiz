@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
-using ZippyNeuron.Metarwiz.Enums;
-using ZippyNeuron.Metarwiz.Extensions;
+using ZippyNeuron.Metarwiz.Parser.Types;
+using ZippyNeuron.Metarwiz.Parser.Helpers;
 
 namespace ZippyNeuron.Metarwiz.Parser.Metars
 {
@@ -23,11 +23,11 @@ namespace ZippyNeuron.Metarwiz.Parser.Metars
         public bool IsInVacinity => _vacinity == "VC";
         public WeatherType WeatherPrimary => (!String.IsNullOrEmpty(_weather1)) ? Enum.Parse<WeatherType>(_weather1) : WeatherType.Unspecified;
         public WeatherType WeatherSecondary => (!String.IsNullOrEmpty(_weather2)) ? Enum.Parse<WeatherType>(_weather2) : WeatherType.Unspecified;
-        public WeatherIntensityIndicator Intensity => _intensity switch
+        public WeatherIntensityIndicatorType Intensity => _intensity switch
         {
-            "-" => WeatherIntensityIndicator.Light,
-            "+" => WeatherIntensityIndicator.Heavy,
-            _ => WeatherIntensityIndicator.Moderate
+            "-" => WeatherIntensityIndicatorType.Light,
+            "+" => WeatherIntensityIndicatorType.Heavy,
+            _ => WeatherIntensityIndicatorType.Moderate
         };
         public string IntensityDescription => Intensity.GetDescription();
         public static string Pattern

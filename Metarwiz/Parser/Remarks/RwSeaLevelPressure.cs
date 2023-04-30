@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Text.RegularExpressions;
-using ZippyNeuron.Metarwiz.Utilities;
+using ZippyNeuron.Metarwiz.Parser.Helpers;
 
 namespace ZippyNeuron.Metarwiz.Parser.Remarks
 {

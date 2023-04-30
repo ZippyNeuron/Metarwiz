@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
 
-namespace ZippyNeuron.Metarwiz.Enums
+namespace ZippyNeuron.Metarwiz.Parser.Types
 {
-    public enum CloudType
+    public enum CloudFormType
     {
         [Description("Unspecified")]
         Unspecified,

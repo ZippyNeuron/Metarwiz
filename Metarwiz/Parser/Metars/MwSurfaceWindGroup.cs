@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
-using ZippyNeuron.Metarwiz.Enums;
-using ZippyNeuron.Metarwiz.Extensions;
+using ZippyNeuron.Metarwiz.Parser.Types;
+using ZippyNeuron.Metarwiz.Parser.Helpers;
 
 namespace ZippyNeuron.Metarwiz.Parser.Metars
 {
@@ -50,11 +50,11 @@ namespace ZippyNeuron.Metarwiz.Parser.Metars
 
         public bool IsGusting => !string.IsNullOrEmpty(_g);
 
-        public SpeedUnit Units => _units switch
+        public SpeedUnitType Units => _units switch
         {
-            "MPS" => SpeedUnit.MPS,
-            "KT" => SpeedUnit.KT,
-            _ => SpeedUnit.Unspecified
+            "MPS" => SpeedUnitType.MPS,
+            "KT" => SpeedUnitType.KT,
+            _ => SpeedUnitType.Unspecified
         };
 
         public int From => _from;
@@ -73,7 +73,7 @@ namespace ZippyNeuron.Metarwiz.Parser.Metars
                 (IsVariable) ? _vrb : _direction.ToString("D3"),
                 _speed.ToString("D2"),
                 (IsGusting) ? $"{_g}{_gusting.ToString("D")}" : String.Empty,
-                Enum.GetName<SpeedUnit>(Units),
+                Enum.GetName<SpeedUnitType>(Units),
                 (HasDirectionalVariations) ? $" {_from.ToString("D3")}{_v}{_to.ToString("D3")}" : String.Empty
             );
         }

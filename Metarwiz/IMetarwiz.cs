@@ -5,12 +5,14 @@ namespace ZippyNeuron.Metarwiz
 {
     public interface IMetarwiz
     {
-        MetarInfo Metar { get; }
+        public MetarInfo Metar { get; }
 
-        T Get<T>() where T : IMetarItem;
+        public T Get<T>() where T : IMetarItem;
 
-        IEnumerable<T> GetMany<T>() where T : IMetarItem;
-        
-        string ToString();
+        public IEnumerable<T> GetMany<T>() where T : IMetarItem;
+
+        public void Parse(string metar, string tag);
+
+        public string ToString();
     }
 }

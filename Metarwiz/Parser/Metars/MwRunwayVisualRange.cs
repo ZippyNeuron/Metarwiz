@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
-using ZippyNeuron.Metarwiz.Enums;
-using ZippyNeuron.Metarwiz.Extensions;
+using ZippyNeuron.Metarwiz.Parser.Types;
+using ZippyNeuron.Metarwiz.Parser.Helpers;
 
 namespace ZippyNeuron.Metarwiz.Parser.Metars
 {
@@ -48,13 +48,13 @@ namespace ZippyNeuron.Metarwiz.Parser.Metars
                 _ => ObservationType.U
             };
         public string ObservationDescription => Observation.GetDescription();
-        public TendencyIndicator Tendency => _tendency switch
+        public TendencyIndicatorType Tendency => _tendency switch
             {
-                "U" => TendencyIndicator.U,
-                "N" => TendencyIndicator.N,
-                "D" => TendencyIndicator.D,
-                "FT" => TendencyIndicator.FT,
-                _ => TendencyIndicator.Unspecified
+                "U" => TendencyIndicatorType.U,
+                "N" => TendencyIndicatorType.N,
+                "D" => TendencyIndicatorType.D,
+                "FT" => TendencyIndicatorType.FT,
+                _ => TendencyIndicatorType.Unspecified
             };
         public string TendencyDescription => Tendency.GetDescription();
 
@@ -69,7 +69,7 @@ namespace ZippyNeuron.Metarwiz.Parser.Metars
                 _divider,
                 (Observation != ObservationType.U) ? Enum.GetName<ObservationType>(Observation) : String.Empty,
                 String.IsNullOrEmpty(_v) ? $"{_from.ToString("D4")}" : $"{_from.ToString("D4")}{_v}{_to.ToString("D4")}",              
-                (Tendency != TendencyIndicator.Unspecified) ? Enum.GetName(Tendency) : String.Empty
+                (Tendency != TendencyIndicatorType.Unspecified) ? Enum.GetName(Tendency) : String.Empty
             );
         }
     }

@@ -1,8 +1,8 @@
 using System.ComponentModel;
 
-namespace ZippyNeuron.Metarwiz.Enums
+namespace ZippyNeuron.Metarwiz.Parser.Types
 {
-    public enum Extents
+    public enum StateOfRunwayExtentType
     {
         [Description("10% or less")]
         TenOrLessPercent = 1,

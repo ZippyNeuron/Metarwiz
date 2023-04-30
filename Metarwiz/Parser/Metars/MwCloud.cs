@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
-using ZippyNeuron.Metarwiz.Enums;
-using ZippyNeuron.Metarwiz.Extensions;
+using ZippyNeuron.Metarwiz.Parser.Types;
+using ZippyNeuron.Metarwiz.Parser.Helpers;
 
 namespace ZippyNeuron.Metarwiz.Parser.Metars
 {
@@ -10,8 +10,8 @@ namespace ZippyNeuron.Metarwiz.Parser.Metars
         private const int Multiplier = 100;
         
         private readonly int _aboveGroundLevel;
-        private readonly Cloud _cloud;
-        private readonly CloudType _cloudType;
+        private readonly CloudType _cloud;
+        private readonly CloudFormType _cloudType;
         private readonly string _altitudeOriginal;
         private readonly string _cloudOriginal;
         private readonly string _cloudTypeOriginal;
@@ -41,8 +41,8 @@ namespace ZippyNeuron.Metarwiz.Parser.Metars
         }
 
         public int AboveGroundLevel => _aboveGroundLevel * Multiplier;
-        public Cloud Cloud => _cloud;
-        public CloudType CloudType => _cloudType;
+        public CloudType Cloud => _cloud;
+        public CloudFormType CloudType => _cloudType;
         public string CloudDescription => Cloud.GetDescription();
         
         public string CloudTypeDescription => CloudType.GetDescription();
@@ -51,9 +51,9 @@ namespace ZippyNeuron.Metarwiz.Parser.Metars
         {
             get
             {
-                var clouds = string.Join("|", Enum.GetNames<Cloud>());
+                var clouds = string.Join("|", Enum.GetNames<CloudType>());
 
-                var cloudTypes = string.Join("|", Enum.GetNames<CloudType>());
+                var cloudTypes = string.Join("|", Enum.GetNames<CloudFormType>());
 
                 return @$"( )(?<CLOUD>///|{clouds})(?<ALTITUDE>\d+|///|//)?(?<CLOUDTYPE>{cloudTypes}|///)?";
             }
@@ -64,9 +64,9 @@ namespace ZippyNeuron.Metarwiz.Parser.Metars
             var alt = (_altitudeOriginal.StartsWith("/") || String.IsNullOrEmpty(_altitudeOriginal)) ? _altitudeOriginal : _aboveGroundLevel.ToString("D3");
 
             return string.Concat(
-                (_cloudOriginal.StartsWith("/") || _cloud == Cloud.Unspecified) ? _cloudOriginal : Enum.GetName(Cloud),
+                (_cloudOriginal.StartsWith("/") || _cloud == Types.CloudType.Unspecified) ? _cloudOriginal : Enum.GetName(Cloud),
                 alt,
-                (_cloudTypeOriginal.StartsWith("/") || _cloudType == CloudType.Unspecified) ? _cloudTypeOriginal : Enum.GetName(CloudType)
+                (_cloudTypeOriginal.StartsWith("/") || _cloudType == CloudFormType.Unspecified) ? _cloudTypeOriginal : Enum.GetName(CloudType)
             ); ;
         }
     }

@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Reflection;
 
-namespace ZippyNeuron.Metarwiz.Extensions
+namespace ZippyNeuron.Metarwiz.Parser.Helpers
 {
     public static class EnumExtensions
     {

@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
-using ZippyNeuron.Metarwiz.Enums;
-using ZippyNeuron.Metarwiz.Extensions;
-using ZippyNeuron.Metarwiz.Utilities;
+using ZippyNeuron.Metarwiz.Parser.Helpers;
+using ZippyNeuron.Metarwiz.Parser.Types;
 
 namespace ZippyNeuron.Metarwiz.Parser.Remarks
 {
