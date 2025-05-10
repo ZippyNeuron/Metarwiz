@@ -1,5 +1,5 @@
-name: Continuous Integration
-run-name: Continuous Integration
+name: continuous-integration
+run-name: continuous-integration
 
 on:
   push:
@@ -7,19 +7,18 @@ on:
     - master
 
 jobs:
-  continuous_integration:
-    name: Continuous Integration
+  continuous-integration:
+    name: continuous-integration
     runs-on: ubuntu-latest
     timeout-minutes: 3
     steps:
     - name: Install Dotnet
-      uses: actions/setup-dotnet@v3.0.3
+      uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 7.0.x
+        dotnet-version: 9.0.x
           
     - name: Checkout
-      uses: actions/checkout@v3.1.0
+      uses: actions/checkout@v4
       
     - name: Build
-      run: dotnet build Metarwiz.sln --configuration Release
-
+      run: dotnet build src/ZippyNeuron.Metarwiz.sln --configuration Release

@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZippyNeuron.Metarwiz", "ZippyNeuron.Metarwiz\ZippyNeuron.Metarwiz.csproj", "{3438461A-CBA0-48CA-8482-A1F25F3477E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZippyNeuron.Metarwiz.Console", "ZippyNeuron.Metarwiz.Console\ZippyNeuron.Metarwiz.Console.csproj", "{376CDB0B-C6CB-41DD-90B3-DE499D20C779}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZippyNeuron.Metarwiz.Benchmark", "ZippyNeuron.Metarwiz.Benchmark\ZippyNeuron.Metarwiz.Benchmark.csproj", "{77056172-5C9F-47EF-B0CF-E262B8C61C8E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\build_package.yaml = .github\workflows\build_package.yaml
+		.github\workflows\continuous_integration.yaml = .github\workflows\continuous_integration.yaml
+		.github\workflows\publish_nuget.yaml = .github\workflows\publish_nuget.yaml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3438461A-CBA0-48CA-8482-A1F25F3477E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3438461A-CBA0-48CA-8482-A1F25F3477E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3438461A-CBA0-48CA-8482-A1F25F3477E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3438461A-CBA0-48CA-8482-A1F25F3477E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{376CDB0B-C6CB-41DD-90B3-DE499D20C779}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{376CDB0B-C6CB-41DD-90B3-DE499D20C779}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{376CDB0B-C6CB-41DD-90B3-DE499D20C779}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{376CDB0B-C6CB-41DD-90B3-DE499D20C779}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77056172-5C9F-47EF-B0CF-E262B8C61C8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77056172-5C9F-47EF-B0CF-E262B8C61C8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77056172-5C9F-47EF-B0CF-E262B8C61C8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77056172-5C9F-47EF-B0CF-E262B8C61C8E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B4A6CBC1-2707-43E5-9204-6014F8970A53}
+	EndGlobalSection
+EndGlobal

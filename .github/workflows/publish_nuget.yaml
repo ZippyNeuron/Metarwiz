@@ -1,29 +1,25 @@
-name: Publish NuGet
-run-name: Publish NuGet
+name: publish-nuget-org
+run-name: publish-nuget-org
 
 on:
   workflow_dispatch:  
 
 jobs:
   build_package:
-    name: Publish NuGet
+    name: publish-nuget-org
     runs-on: ubuntu-latest
     timeout-minutes: 3
     steps:
       - name: Install Dotnet
-        uses: actions/setup-dotnet@v3.0.3
+        uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 7.0.x
+          dotnet-version: 9.0.x
         
       - name: Checkout
-        uses: actions/checkout@v3.1.0
+        uses: actions/checkout@v4
 
-      - name: Publish NuGet - nuget.org
-        id: publish_nuget
-        uses: brandedoutcast/publish-nuget@v2.5.5
-        with:
-          PROJECT_FILE_PATH: Metarwiz/Metarwiz.csproj
-          PACKAGE_NAME: ZippyNeuron.Metarwiz
-          NUGET_KEY: ${{secrets.NUGET_ORG_KEY}}
-          NUGET_SOURCE: https://api.nuget.org
-          INCLUDE_SYMBOLS: false
+      - name: Build
+        run: dotnet build src/ZippyNeuron.Metarwiz.sln --configuration Release
+
+      - name: Publish Nuget Package
+        run: dotnet nuget push "src/ZippyNeuron.Metarwiz/bin/Release/*.nupkg" --api-key ${{ secrets.NUGET_ORG_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
