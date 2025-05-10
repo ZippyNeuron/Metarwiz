@@ -11,9 +11,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZippyNeuron.Metarwiz.Benchm
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 	ProjectSection(SolutionItems) = preProject
-		.github\workflows\build_package.yaml = .github\workflows\build_package.yaml
-		.github\workflows\continuous_integration.yaml = .github\workflows\continuous_integration.yaml
-		.github\workflows\publish_nuget.yaml = .github\workflows\publish_nuget.yaml
+		..\.github\workflows\build_package.yaml = ..\.github\workflows\build_package.yaml
+		..\.github\workflows\continuous_integration.yaml = ..\.github\workflows\continuous_integration.yaml
+		..\.github\workflows\publish_nuget.yaml = ..\.github\workflows\publish_nuget.yaml
 	EndProjectSection
 EndProject
 Global

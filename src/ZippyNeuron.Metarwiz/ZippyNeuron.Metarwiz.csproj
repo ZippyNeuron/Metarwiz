@@ -3,7 +3,6 @@
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageId>ZippyNeuron.Metarwiz</PackageId>
     <Authors>ZippyNeuron</Authors>
     <Company>ZippyNeuron</Company>
@@ -20,19 +19,22 @@
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     <Description>Metarwiz is a simple class library that can be used to parse and visualise METAR reports (ICAO and North American).</Description>
     <Copyright>© 2023 ZippyNeuron</Copyright>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageTags>Aviation Weather Parser Station Terminal Tools Simulation America Forecast Pilot Metar ICAO Report Flight Neuron North Zippy Aerodrome Meterorlogical</PackageTags>
     <PackageReleaseNotes></PackageReleaseNotes>
     <LangVersion>11</LangVersion>
     <Title>ZippyNeuron.Metarwiz</Title>
-    <PackageLicenseUrl></PackageLicenseUrl>
     <PackageIcon>NuGet.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\LICENSE">
+    <None Include="..\..\NuGet.png">
       <Pack>True</Pack>
-      <PackagePath></PackagePath>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
     </None>
     <None Update="NuGet.png">
       <Pack>True</Pack>
