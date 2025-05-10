@@ -28,5 +28,5 @@ jobs:
         run: dotnet nuget add source --username ZippyNeuron --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name GitHub "https://nuget.pkg.github.com/ZippyNeuron/index.json"
 
       - name: Publish Nuget Package
-        run: dotnet nuget push "src/ZippyNeuron.Metarwiz/bin/Release/*.nupkg" --api-key ${{ secrets.PACKAGE_WRITE_TOKEN }} --source "GitHub"
+        run: dotnet nuget push "src/ZippyNeuron.Metarwiz/bin/Release/*.nupkg" --api-key ${{ secrets.PACKAGE_WRITE_TOKEN }} --source "GitHub" --skip-duplicate
   
